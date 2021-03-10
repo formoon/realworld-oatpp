@@ -1,7 +1,9 @@
 .DS_Store
 /b
 /build
+.vscode
 .env
 backup.sh
 config.json
+azure-pipelines.yml
 

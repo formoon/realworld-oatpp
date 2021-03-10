@@ -1,1 +1,4 @@
 /build/
+cmake_command
+.vscode
+/b/
