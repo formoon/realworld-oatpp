@@ -6,8 +6,8 @@ mkdir tmp
 cd tmp
 ##########################################################
 prepare(){
-    sudo apt install build-essential -y
-    sudo apt install zlib1g-dev libssl-dev nlohmann-json3-dev libpq postgresql-server-dev-12 -y
+    sudo apt install build-essential cmake git -y
+    sudo apt install zlib1g-dev libssl-dev nlohmann-json3-dev libpq-dev postgresql-server-dev-12 -y
 }
 
 ##########################################################
