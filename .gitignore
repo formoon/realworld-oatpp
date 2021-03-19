@@ -6,4 +6,5 @@
 backup.sh
 config.json
 azure-pipelines.yml
+download/*
 
