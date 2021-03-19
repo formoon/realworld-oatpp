@@ -79,7 +79,7 @@ public:
     auto encoders = std::make_shared<oatpp::web::protocol::http::encoding::ProviderCollection>();
     encoders->add(std::make_shared<oatpp::zlib::GzipEncoderProvider>());
     encoders->add(std::make_shared<oatpp::zlib::DeflateEncoderProvider>());
-    encoders->Preferred="gzip";
+    // encoders->Preferred="gzip";
     components->contentEncodingProviders = encoders;
     auto connectionHandler = std::make_shared<oatpp::web::server::AsyncHttpConnectionHandler>(components, executor);
     /* Add CORS-enabling interceptors */
