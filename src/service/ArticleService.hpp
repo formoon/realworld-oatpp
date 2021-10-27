@@ -189,7 +189,7 @@ public:
     return rs;
   }
   oatpp::Object<ArticleResultDto> newArticle(oatpp::Object<NewArticleDataDto>nadd,Int32 uid) const {
-    string slug=slugify(nadd->title->std_str())+"_"+randomString(10);
+    string slug=slugify(nadd->title)+"_"+randomString(10);
 
     auto dbResult = m_database->createArticle(uid,slug.c_str(),nadd);
     OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
@@ -207,7 +207,7 @@ public:
   }
   oatpp::Object<ArticleResultDto> updateArticle(oatpp::Object<UpdateArticleDataDto>uadd,Int32 uid) const {
     String orgSlug=uadd->slug;
-    string slug=slugify(uadd->title->std_str())+"_"+randomString(10);
+    string slug=slugify(uadd->title)+"_"+randomString(10);
     uadd->slug=slug.c_str();
 
     auto dbResult = m_database->updateArticle(uid,orgSlug,uadd);

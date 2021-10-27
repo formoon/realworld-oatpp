@@ -20,9 +20,9 @@ set(OPENSSL_ROOT_DIR /usr/local/opt/openssl)
 
 set(CMAKE_CXX_STANDARD 11)
 
-find_package(oatpp 1.2.5 REQUIRED)
-find_package(oatpp-zlib 1.2.5 REQUIRED)
-find_package(oatpp-postgresql   1.2.5 REQUIRED)
+find_package(oatpp 1.3.0 REQUIRED)
+find_package(oatpp-zlib 1.3.0 REQUIRED)
+find_package(oatpp-postgresql   1.3.0 REQUIRED)
 find_package(ZLIB REQUIRED)
 
 include_directories(src)

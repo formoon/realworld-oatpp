@@ -110,14 +110,14 @@ public:
         response->putHeaderIfNotExists("Content-Type","application/json");
         return _return(response);
       };
-      if(nud->user->username->std_str().length() < 1 ||
-          nud->user->password->std_str().length()<8){
+      if(nud->user->username->length() < 1 ||
+          nud->user->password->length()<8){
         errmsg=mkErrMsg("min username length must > 0, min password length must > 8");
         auto response=controller->createResponse(Status::CODE_400, errmsg);
         response->putHeaderIfNotExists("Content-Type","application/json");
         return _return(response);
       };
-      if(!is_email_valid(nud->user->email->std_str())){
+      if(!is_email_valid(nud->user->email)){
         errmsg=mkErrMsg("email address invalid");
         auto response=controller->createResponse(Status::CODE_400, errmsg);
         response->putHeaderIfNotExists("Content-Type","application/json");

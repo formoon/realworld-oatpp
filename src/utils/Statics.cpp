@@ -28,12 +28,14 @@
 
 Statics::Statics(const oatpp::String& resDir, bool streaming) {
   
-  if(!resDir || resDir->getSize() == 0) {
+  // if(!resDir || resDir->getSize() == 0) {
+  if(!resDir || resDir->length() == 0) {
     throw std::runtime_error("[Statics::Statics()]: Invalid resDir path. Please specify full path to STATICS folder");
   }
   
   m_resDir = resDir;
-  if(m_resDir->getData()[m_resDir->getSize() - 1] != '/') {
+  // if(m_resDir->getData()[m_resDir->getSize() - 1] != '/') {
+  if(m_resDir->at(m_resDir->length() - 1) != '/') {
     m_resDir = m_resDir + "/";
   }
 
@@ -48,7 +50,7 @@ void Statics::cacheFile(const char* fileName) {
 oatpp::String Statics::loadFromFile(const char* fileName) {
   
   auto fullFilename = m_resDir + fileName;
-  
+  /*
   std::ifstream file (fullFilename->c_str(), std::ios::in|std::ios::binary|std::ios::ate);
   
   if (file.is_open()) {
@@ -59,11 +61,13 @@ oatpp::String Statics::loadFromFile(const char* fileName) {
     file.close();
     return result;
     
-  }
-  
+  }*/
+  oatpp::String rs = oatpp::String::loadFromFile(fullFilename->c_str());
+  if (rs)
+    return rs;
+
   OATPP_LOGE("Statics::loadFromFile()", "Can't load file '%s'", fullFilename->c_str());
-  throw std::runtime_error("[Statics::loadFromFile(...)]: Can't load file. Please make sure you specified full path to STATIC folder");
-  
+  throw std::runtime_error("[Statics::loadFromFile(...)]: Can't load file. Please make sure you specified full path to STATIC folder");  
 }
   
 oatpp::String Statics::getFile(const oatpp::String& filename) {

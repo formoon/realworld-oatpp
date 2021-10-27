@@ -50,7 +50,7 @@ public:
       mkErrMsg("Unknown error"));
 
     auto it=result[0];
-    OATPP_ASSERT_HTTP1(BCrypt::validatePassword(password->std_str(),it->hash->std_str()), 
+    OATPP_ASSERT_HTTP1(BCrypt::validatePassword(password,it->hash), 
         Status::CODE_400, 
         mkErrMsg("Email or password not match"));
 
@@ -70,7 +70,7 @@ public:
   Object<UserAuthResultDto> newuser(const oatpp::String& username, 
       const oatpp::String& email, const oatpp::String& password,
       Status &status, oatpp::String& errmsg) const {
-	  String hash = BCrypt::generateHash(password->std_str(), 12).c_str();
+	  String hash = BCrypt::generateHash(password, 12).c_str();
     auto dbResult = m_database->newuser(username,email,hash);
     OATPP_ASSERT_HTTP1(dbResult->isSuccess(), 
       Status::CODE_400, 
@@ -105,7 +105,7 @@ public:
       Int32 uid) const {
     std::shared_ptr<oatpp::orm::QueryResult> dbResult;
     if(uud->password){
-  	  uud->password = BCrypt::generateHash(uud->password->std_str(), 12).c_str();
+  	  uud->password = BCrypt::generateHash(uud->password, 12).c_str();
       dbResult = m_database->updateWithPassword(uud,uid);
     } else {
       dbResult = m_database->update(uud,uid);

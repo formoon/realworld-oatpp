@@ -36,7 +36,7 @@ public:
         obj
             .add_claim("exp",(uint64_t) exp)
             .add_claim("id",(uint64_t)id)
-            .add_claim("username",username->std_str());
+            .add_claim("username",username);
 
         auto enc_str = obj.signature();
         return String(enc_str.c_str());

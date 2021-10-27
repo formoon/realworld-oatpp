@@ -63,9 +63,9 @@ public:
         response->putHeaderIfNotExists("Content-Type","application/json");
         return _return(response);
       };
-      if(nad->article->title->std_str().length() < 2 ||
-        nad->article->body->std_str().length() < 2 ||
-        nad->article->description->std_str().length() < 2
+      if(nad->article->title->length() < 2 ||
+        nad->article->body->length() < 2 ||
+        nad->article->description->length() < 2
         ){
         errmsg=mkErrMsg("Title/Description/Body can not be too short");
         auto response=controller->createResponse(Status::CODE_400, errmsg);
@@ -102,9 +102,9 @@ public:
         response->putHeaderIfNotExists("Content-Type","application/json");
         return _return(response);
       };
-      if(nad->article->title->std_str().length() < 2 ||
-        nad->article->body->std_str().length() < 2 ||
-        nad->article->description->std_str().length() < 2
+      if(nad->article->title->length() < 2 ||
+        nad->article->body->length() < 2 ||
+        nad->article->description->length() < 2
         ){
         errmsg=mkErrMsg("Title/Description/Body can not be too short");
         auto response=controller->createResponse(Status::CODE_400, errmsg);
@@ -157,13 +157,13 @@ public:
       auto s_favorited=request->getQueryParameter("favorited");
       auto s_author=request->getQueryParameter("author");
       if(s_tag){
-        s_tag = urlDecode(s_tag->std_str()).c_str();
+        s_tag = urlDecode(s_tag).c_str();
         ard=controller->m_articleService.getAllByTag(s_tag,ua.id,offset,limit);
       } else if (s_author) {
-        s_author = urlDecode(s_author->std_str()).c_str();
+        s_author = urlDecode(s_author).c_str();
         ard=controller->m_articleService.getAllByAuthor(s_author,ua.id,offset,limit);
       } else if (s_favorited) {
-        s_favorited = urlDecode(s_favorited->std_str()).c_str();
+        s_favorited = urlDecode(s_favorited).c_str();
         ard=controller->m_articleService.getAllByFavorited(s_favorited,ua.id,offset,limit);
       } else {
         ard=controller->m_articleService.getAll(ua.id,offset,limit);

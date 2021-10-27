@@ -54,7 +54,7 @@ std::string stringFormat( const std::string& format, Args ... args ){
 };
 
 oatpp::String mkErrMsg(oatpp::String e){
-    std::string r="{\"errors\": {\"" + e->std_str()
+    std::string r="{\"errors\": {\"" + e
          +"\":[\"Error\"]}}";
     return oatpp::String(r.c_str());
 }
@@ -79,8 +79,8 @@ std::shared_ptr<OutgoingResponse> addType(std::shared_ptr<OutgoingResponse> resp
 
 oatpp::List<oatpp::String> split(oatpp::String src, oatpp::String dlt){
       auto rs=oatpp::List<oatpp::String>::createShared();
-      std::string s = src->std_str();
-      std::string delimiter = dlt->std_str();//"%%";
+      std::string s = src;
+      std::string delimiter = dlt;//"%%";
       size_t pos = 0;
       std::string token;
       while ((pos = s.find(delimiter)) != std::string::npos) {

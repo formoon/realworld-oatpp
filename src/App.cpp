@@ -13,7 +13,7 @@
 //--------------------------------------------------------------------------
 int test_jwt(){
   UserAuth ua {UserAuth::newExp(),23,"abcdef"};
-  string en=ua.toToken()->std_str();
+  string en=ua.toToken();
   cout << en << endl;
   auto ub = UserAuth::fromToken(en.c_str());
   cout << ub.exp << " " << ub.id << " "<< ub.username->c_str() << endl;
@@ -50,6 +50,7 @@ void run() {
   OATPP_COMPONENT(std::shared_ptr<oatpp::web::server::HttpRouter>, router);
 
   /* Create BaseController and add all of its endpoints to router */
+  /*
   auto baseController = std::make_shared<BaseController>();
   baseController->addEndpointsToRouter(router);
   auto userController = std::make_shared<UserController>();
@@ -57,7 +58,11 @@ void run() {
   auto articleController = std::make_shared<ArticleController>();
   articleController->addEndpointsToRouter(router);
   auto commentController = std::make_shared<CommentController>();
-  commentController->addEndpointsToRouter(router);
+  commentController->addEndpointsToRouter(router);*/
+  router->addController(std::make_shared<BaseController>());
+  router->addController(std::make_shared<UserController>());
+  router->addController(std::make_shared<ArticleController>());
+  router->addController(std::make_shared<CommentController>());
 
   /* Get connection handler component */
   OATPP_COMPONENT(std::shared_ptr<oatpp::network::ConnectionHandler>, connectionHandler);

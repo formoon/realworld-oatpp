@@ -56,7 +56,8 @@ public:
         dbTtl=(v_uint16)db["ttl"].retrieve<oatpp::Float64>();        
     }
     Config(const char *filename){
-        oatpp::String content = oatpp::base::StrBuffer::loadFromFile(filename);
+        oatpp::String content = oatpp::String::loadFromFile(filename);
+        // oatpp::String content = oatpp::base::StrBuffer::loadFromFile(filename);
         if(!content){
             OATPP_LOGE("Config", "read config file error!");
             exit(1);

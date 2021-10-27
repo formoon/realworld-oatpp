@@ -22,7 +22,8 @@
  *
  ***************************************************************************/
 
-#pragma once
+#ifndef static_files_hpp
+#define static_files_hpp
 
 #include "oatpp/core/Types.hpp"
 #include "oatpp/core/data/stream/ChunkedBuffer.hpp"
@@ -64,7 +65,6 @@ public:
    * @param resDir - directory containing static resources.
    * @return - `std::shared_ptr` to Statics.
    */
-  // Cache function not use in this project
   static std::shared_ptr<Statics> cacheFiles(const oatpp::String& resDir) {
     auto res = std::make_shared<Statics>(resDir);
 
@@ -107,3 +107,4 @@ public:
   }
 };
 
+#endif /* static_file_hpp */

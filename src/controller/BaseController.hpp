@@ -91,8 +91,8 @@ public:
     std::string filename;
     Action act() override {
       // Aquire all string after * ,
-      // getPathTail() return oatpp::String, std_str() convert to std::string
-      filename=request->getPathTail()->std_str();
+      // getPathTail() return oatpp::String, from 1.3.0 directly assign to std::string
+      filename=request->getPathTail();
       int qpos=filename.find("?"); // for ?query=xxxx
       if (qpos != std::string::npos)
         filename = filename.substr(0,qpos);
@@ -113,7 +113,7 @@ public:
     ENDPOINT_ASYNC_INIT(getDownloadFiles)
     std::string filename;
     Action act() override {
-      filename=request->getPathTail()->std_str();
+      filename=request->getPathTail();
       int qpos=filename.find("?"); // for ?query=xxxx
       if (qpos != std::string::npos)
         filename = filename.substr(0,qpos);
