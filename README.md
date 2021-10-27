@@ -8,6 +8,7 @@ This back-end implementation uses C++ and OAT++ Web framework. The database syst
 Compared with other development languages, Web development is indeed not a good choice for C++.  
 With OAT++, this process is much simpler, but it is still tedious and difficult.  
 But I like C++, that's enough.
+PS: 10/27/2021 adapted oat++ 1.3.0
 
 # Prerequisite
 In macOS:  
